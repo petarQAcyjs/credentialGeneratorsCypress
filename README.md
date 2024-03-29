@@ -57,7 +57,7 @@ import { generateEmail, generatePhoneNumber } from "../fixtures/functions";
 You can then use these functions to generate unique credentials or data needed for your tests.
 
 ## Contact Information
-For any queries or feedback regarding this project, please contact us at [your-email@example.com].
+For any queries or feedback regarding this project, please contact us at femicpetar@gmail.com.
 
 ## Acknowledgments
  Lambdatest for providing the dummy test site.
