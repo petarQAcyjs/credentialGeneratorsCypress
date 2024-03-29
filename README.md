@@ -1,4 +1,4 @@
-# emailGeneratorCypress
+# ceredentialGeneratorCypress
 
 ## Overview
 
