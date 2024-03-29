@@ -1,4 +1,4 @@
-# ceredentialGeneratorCypress
+# credentialGeneratorCypress
 
 ## Overview
 
