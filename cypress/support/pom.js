@@ -11,4 +11,9 @@ const registrationPage = {
     continueButton: 'input[value="Continue"]'
 }
 
-export { registrationPage }
+const navigationBar = {
+    myAccount: '#widget-navbar-217834 > .navbar-nav > :nth-child(6) > .nav-link',
+    logout: '.mz-sub-menu-96 > :nth-child(6) > .icon-left'
+}
+
+export { registrationPage, navigationBar };

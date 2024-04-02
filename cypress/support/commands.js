@@ -1,25 +1,22 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import { registrationPage } from './pom';
+import { generateName, generateSurname, generateEmail, generatePhoneNumber } from "../fixtures/functions";
+let firstname = generateName()
+let lastaname = generateSurname()
+let email = generateEmail()
+let telephone = generatePhoneNumber()
+
+Cypress.Commands.add('registerUser', () => {
+    firstname = generateName()
+    cy.get(registrationPage.firstname).type(generateName()).as('firstname');
+    lastaname = generateSurname()
+    cy.get(registrationPage.lastname).type(generateSurname()).as('lastname');
+    email = generateEmail()
+    cy.get(registrationPage.email).type(generateEmail()).as('email');
+    telephone = generatePhoneNumber()
+    cy.get(registrationPage.telephone).type(generatePhoneNumber()).as('telephone');
+    cy.get(registrationPage.password).type('testing123');
+    cy.get(registrationPage.confirmPassword).type('testing123');
+    cy.get(registrationPage.subNo).click();
+    cy.get(registrationPage.termsCheckbox).click();
+    cy.get(registrationPage.continueButton).click();
+  })
