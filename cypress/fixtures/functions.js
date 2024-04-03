@@ -66,3 +66,15 @@ export function generateName() {
     const randomSurname = names[Math.floor(Math.random() * names.length)];
     return randomSurname;
   }
+
+  export function generatePassword(noOfCharacters) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*.,?:';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < noOfCharacters) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+    }
+    return result;
+}
