@@ -1,17 +1,12 @@
-import { registrationPage, navigationBar } from "../support/pom";
-import {
-  generateName,
-  generateSurname,
-  generateEmail,
-  generatePhoneNumber,
-} from "../fixtures/functions";
+import { registrationPage, accountPage, accountEditPage, navigationBar } from "../support/pom";
+import { generateName, generateSurname, generateEmail, generatePhoneNumber } from "../fixtures/functions";
 
 const name = generateName();
 const email = generateEmail();
 const telephone = generatePhoneNumber();
 const surname = generateSurname();
 
-describe("Chek personal info", () => {
+describe("Check personal info", () => {
   before("Visit the page and register user", () => {
     cy.log('close all sessions')
     Cypress.session.clearAllSavedSessions()
@@ -30,54 +25,31 @@ describe("Chek personal info", () => {
   });
 
   beforeEach("login", () => {
-    cy.session("login", () => {
-      cy.visit("/index.php?route=account/login");
-      cy.get("#input-email").type(email);
-      cy.get("#input-password").type("testing123");
-      cy.get("form > .btn").click();
-    }).then((session) => {
-      Cypress.session = session;
-    });
+    cy.login(email, "testing123");
   });
 
   it("Checks if the name is the same as in the form", () => {
-    cy.visit("/index.php?route=account/account", {
-      onBeforeLoad: (win) => {
-        win.session = Cypress.session;
-      },
-    });
-    cy.contains(" Edit Account").click();
-    cy.get("#input-firstname").should("have.value", name);
+    cy.visit("/index.php?route=account/account");
+    cy.get(accountPage.editAccount).click();
+    cy.get(accountEditPage.firstname).should("have.value", name);
   });
 
   it("Checks if the surname is the same as in the form", () => {
-    cy.visit("/index.php?route=account/account", {
-      onBeforeLoad: (win) => {
-        win.session = Cypress.session;
-      },
-    });
-    cy.contains(" Edit Account").click();
-    cy.get("#input-lastname").should("have.value", surname);
+    cy.visit("/index.php?route=account/account");
+    cy.get(accountPage.editAccount).click();
+    cy.get(accountEditPage.lastname).should("have.value", surname);
   });
 
   it("Checks if the email is the same as in the form", () => {
-    cy.visit("/index.php?route=account/account", {
-      onBeforeLoad: (win) => {
-        win.session = Cypress.session;
-      },
-    });
-    cy.contains(" Edit Account").click();
-    cy.get("#input-email").should("have.value", email);
+    cy.visit("/index.php?route=account/account");
+    cy.get(accountPage.editAccount).click();
+    cy.get(accountEditPage.email).should("have.value", email);
   });
 
   it("Checks if the phone number is the same as in the form", () => {
-    cy.visit("/index.php?route=account/account", {
-      onBeforeLoad: (win) => {
-        win.session = Cypress.session;
-      },
-    });
-    cy.contains(" Edit Account").click();
-    cy.get("#input-telephone").should("have.value", telephone);
+    cy.visit("/index.php?route=account/account");
+    cy.get(accountPage.editAccount).click();
+    cy.get(accountEditPage.telephone).should("have.value", telephone);
   });
 
 });
