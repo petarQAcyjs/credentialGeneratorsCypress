@@ -2,7 +2,7 @@
 
 ## Overview
 
-A key feature of this project is the use of custom fixtures located in cypress/fixtures/functions.js, which allow for the generation of unique credentials for comprehensive testing scenarios.
+A key feature of this project is the use of custom functions located in cypress/fixtures/functions.js, which allows for the generation of unique credentials for comprehensive testing scenarios.
 
 ## Installation and Setup
 ### Prerequisites
